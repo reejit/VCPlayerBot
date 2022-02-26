@@ -1,9 +1,16 @@
 from pyrogram.types import Message
-from pyrogram import filters, Client
+from utils import is_admin
 from pySmartDL import SmartDL
 import os
+from pyrogram import (
+    Client, 
+    filters
+    )
 
-@Client.on_message(filters.command("download"))
+
+admin_filter=filters.create(is_admin) 
+
+@Client.on_message(filters.command(["download"]) & chat_filter)
 async def Upload(client: Client, message: Message):
      chat_id = message.chat.id
      if len(message.command) == 1:
