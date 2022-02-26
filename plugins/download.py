@@ -6,11 +6,12 @@ from pyrogram import (
     Client, 
     filters
     )
+from bot import bot
 
 
 admin_filter=filters.create(is_admin) 
 
-@Client.on_message(filters.command(["download"]) & chat_filter)
+@bot.on_message(filters.command(["download"]) & chat_filter)
 async def Upload(client: Client, message: Message):
      chat_id = message.chat.id
      if len(message.command) == 1:
