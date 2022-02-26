@@ -12,7 +12,7 @@ from bot import bot
 admin_filter=filters.create(is_admin) 
 
 @bot.on_message(filters.command(["download"]) & chat_filter)
-async def Upload(client: Client, message: Message):
+async def Upload(bot, message):
      chat_id = message.chat.id
      if len(message.command) == 1:
         await message.reply_text("No link!")
