@@ -281,13 +281,13 @@ async def add_to_playlist(_, message: Message):
             await download(track)
 
 @Client.on_message(filters.command(["download"]) & chat_filter)
-async def Upload(_, m: Message):    
+async def Upload(client: Client, message: Message):    
      if len(message.command) == 1:
-        await message.reply("No link!")
+        await message.reply_text("No link!")
         return
      link = message.command[1]     
      download = SmartDL(link, progress_bar=False)
-     m = message.reply("Downloading")
+     m = message.reply_text("Downloading")
      download.start(blocking=False)
      while not download.isFinished():
       Eta = download.get_eta(human=True)
